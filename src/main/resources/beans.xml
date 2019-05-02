@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="student" class="domain.Student">
+        <property name="id" value="11"/>
+        <property name="age" value="22"/>
+        <property name="name" value="jack"/>
+    </bean>
+
+    <bean id="studentConstruct" class="domain.Student">
+        <constructor-arg name="age" value="22"></constructor-arg>
+        <constructor-arg name="id" value="11"></constructor-arg>
+        <constructor-arg name="name" value="jack"></constructor-arg>
+    </bean>
+
+    <bean id="studentConstruct2" class="domain.Student">
+        <constructor-arg index="0" value="11"></constructor-arg>
+        <constructor-arg index="1" value="jack"></constructor-arg>
+        <constructor-arg index="2" value="22"></constructor-arg>
+    </bean>
+
+    <bean id="studentConstruct3" class="domain.Student">
+        <constructor-arg type="int" value="11"></constructor-arg>
+        <constructor-arg type="java.lang.String" value="jack"></constructor-arg>
+        <constructor-arg type="int" value="22"></constructor-arg>
+    </bean>
+
+    <bean id="bookFactory" class="domain.BookFactory"></bean>
+
+    <!-- Non static -->
+   <!-- <bean id="bookMath" factory-bean="bookFactory" factory-method="getBook">
+        <constructor-arg value="Math"></constructor-arg>
+    </bean>
+-->
+
+    <!-- static -->
+    <bean id="bookChinese" class="domain.BookFactory" factory-method="getBook">
+        <constructor-arg value="Chinese"></constructor-arg>
+    </bean>
+
+    <bean id="bookEnglish" class="domain.BookFactory" factory-method="getBook">
+        <constructor-arg value="English"></constructor-arg>
+    </bean>
+</beans>
