@@ -15,11 +15,24 @@ import java.io.Serializable;
  */
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 public class Student implements Serializable {
 
     private static final long serialVersionUID = -2088281526481179972L;
     private int id;
     private String name;
     private int age;
+
+    public void init(){
+        System.out.println("student init...");
+    }
+
+    public void destroy(){
+        System.out.println("student destroy...");
+    }
+
+
+    public Student() {
+        System.out.println("noArgsConstructor...");
+    }
 }

@@ -17,8 +17,19 @@ public class ApplicationContextTest {
     @Test
     public void testXml(){
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
-        Student student = (Student) applicationContext.getBean("student");
-        System.out.println(student);
+        Book book = (Book) applicationContext.getBean("book");
+        System.out.println(book);
+        Student studentNoValue = (Student) applicationContext.getBean("stuName");
+
+        applicationContext.close();
+
+        /*Student studentNoValue2 = (Student) applicationContext.getBean("stuName");
+
+        System.out.println(studentNoValue == studentNoValue2);
+
+        Student studentFullValue = (Student) applicationContext.getBean("studentFullValue");
+        System.out.println(studentNoValue);
+        System.out.println(studentFullValue);
 
 
         Student studentConstruct1 = (Student) applicationContext.getBean("studentConstruct");
@@ -29,16 +40,17 @@ public class ApplicationContextTest {
         System.out.println(studentConstruct3);
 
         Book bookChinese = (Book) applicationContext.getBean("bookChinese");
-        System.out.println(bookChinese);
+        System.out.println(bookChinese);*/
     }
 
     @Test
     public void testJavaConfig(){
         AnnotationConfigApplicationContext applicationContext
                 = new AnnotationConfigApplicationContext(SpringConfiguration.class);
-//        Student student = (Student) applicationContext.getBean("stu");// byName
-        Student student = applicationContext.getBean(Student.class);// byType
+        Student student = (Student) applicationContext.getBean("student");// byName
         System.out.println(student);
+//        Student student = applicationContext.getBean(Student.class);// byType
+//        System.out.println(student);
 
         Book book = (Book) applicationContext.getBean("book");
         Book book1 = (Book) applicationContext.getBean("book");
