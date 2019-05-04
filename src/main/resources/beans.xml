@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- 1.空值的student -->
     <bean id="studentNoValue" class="domain.Student" />
@@ -37,13 +38,14 @@
 
     <import resource="beans-another.xml"/>
     <bean id="bookFactory" class="domain.BookFactory"></bean>
-
+    <bean id="lifeCycleBean" class="domain.LifeCycleBean" init-method="xmlInit" destroy-method="xmlDestroy"></bean>
+    <context:annotation-config/>
     <!-- Non static -->
    <!-- <bean id="bookMath" factory-bean="bookFactory" factory-method="getBook">
         <constructor-arg value="Math"></constructor-arg>
     </bean>
 -->
-
+    <bean id="smartLifeCycle" class="lifecycle.SmartLifeCycleDemo"/>
     <!-- static -->
     <bean id="bookChinese" class="domain.BookFactory" factory-method="getBook">
         <constructor-arg value="Chinese"></constructor-arg>

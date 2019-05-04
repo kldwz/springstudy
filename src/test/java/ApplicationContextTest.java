@@ -17,12 +17,13 @@ public class ApplicationContextTest {
     @Test
     public void testXml(){
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
-        Book book = (Book) applicationContext.getBean("book");
+ /*       Book book = (Book) applicationContext.getBean("book");
         System.out.println(book);
         Student studentNoValue = (Student) applicationContext.getBean("stuName");
-
-        applicationContext.close();
-
+*/
+//        LifeCycleBean lifeCycleBean = (LifeCycleBean) applicationContext.getBean("lifeCycleBean");
+//        applicationContext.close();
+        applicationContext.registerShutdownHook();
         /*Student studentNoValue2 = (Student) applicationContext.getBean("stuName");
 
         System.out.println(studentNoValue == studentNoValue2);
@@ -57,4 +58,5 @@ public class ApplicationContextTest {
         System.out.println(book == book1);// false
         System.out.println(book);
     }
+
 }
