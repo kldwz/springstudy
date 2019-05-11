@@ -1,8 +1,6 @@
 package domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -14,7 +12,7 @@ import java.io.Serializable;
  * @since 1.0.0
  */
 @Data
-@AllArgsConstructor
+//@AllArgsConstructor
 //@NoArgsConstructor
 public class Student implements Serializable {
 
@@ -31,6 +29,13 @@ public class Student implements Serializable {
         System.out.println("student destroy...");
     }
 
+
+    public Student(int id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        System.out.println("allArgsConstructor...");
+    }
 
     public Student() {
         System.out.println("noArgsConstructor...");

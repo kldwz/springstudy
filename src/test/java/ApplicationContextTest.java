@@ -59,4 +59,15 @@ public class ApplicationContextTest {
         System.out.println(book);
     }
 
+    @Test
+    public void testProcessor(){
+        AnnotationConfigApplicationContext applicationContext
+                = new AnnotationConfigApplicationContext(SpringConfiguration.class);
+        Student bean = applicationContext.getBean(Student.class);
+
+        Student bean2 = applicationContext.getBean(Student.class);
+        System.out.println(bean);
+        System.out.println(bean == bean2);
+    }
+
 }
