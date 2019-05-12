@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.context.annotation.*;
 import postprocessor.HelloBeanFactoryPostProcessor;
 import postprocessor.HelloBeanPostProcessor;
+import postprocessor.StudentFactoryBean;
 
 /**
  * 使用javabean的方式配置
@@ -23,6 +24,11 @@ public class SpringConfiguration {
     @Scope(value = "singleton")
     public Student student(){
         return new Student(11,"jack",22);
+    }
+
+    @Bean
+    public StudentFactoryBean studentFactoryBean(){
+        return new StudentFactoryBean();
     }
 
     @Bean

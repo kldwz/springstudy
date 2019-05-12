@@ -1,3 +1,5 @@
+import annotation.StudentService;
+import config.AnnotationConfiguration;
 import config.SpringConfiguration;
 import domain.Book;
 import domain.Student;
@@ -70,4 +72,25 @@ public class ApplicationContextTest {
         System.out.println(bean == bean2);
     }
 
+    @Test
+    public void testStudentFactoryBean(){
+        AnnotationConfigApplicationContext applicationContext
+                = new AnnotationConfigApplicationContext(SpringConfiguration.class);
+
+        Student student = (Student) applicationContext.getBean("studentFactoryBean");
+        System.out.println(student);
+    }
+
+    @Test
+    public void testAnnotationConfig(){
+        AnnotationConfigApplicationContext applicationContext
+                = new AnnotationConfigApplicationContext(AnnotationConfiguration.class);
+
+//        StudentService studentService = applicationContext.getBean(StudentService.class);
+        StudentService studentService = (StudentService) applicationContext.getBean("studentServiceImpl");
+        Student stu = new Student();
+        stu.setName("lucy");
+        stu.setAge(20);
+        studentService.add(stu);
+    }
 }

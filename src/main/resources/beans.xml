@@ -54,6 +54,7 @@
     <bean id="bookEnglish" class="domain.BookFactory" factory-method="getBook">
         <constructor-arg value="English"></constructor-arg>
     </bean>
+    <context:component-scan base-package="annotation"/>
 
 
 </beans>
